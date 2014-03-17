@@ -60,9 +60,6 @@
 <!-- BEGIN_INCLUDE(validation:validate-double) -->
 <validation:validate-double value="3.14" locale="US"/>
 <!-- END_INCLUDE(validation:validate-double) -->
-<!-- BEGIN_INCLUDE(validation:validate-short) -->
-<validation:validate-short value="182976389" locale="US"/>
-<!-- END_INCLUDE(validation:validate-short) -->
 <!-- BEGIN_INCLUDE(validation:validate-not-empty) -->
 <validation:validate-not-empty object-ref="#[payload]"/>
 <!-- END_INCLUDE(validation:validate-not-empty) -->

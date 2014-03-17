@@ -499,46 +499,6 @@ public class ValidationModule {
         }
     }
 
-    /**
-     * If the specified <code>value</code> is not a valid {@link Short} throw an exception.
-     * <p/>
-     * {@sample.xml ../../../doc/mule-module-validation.xml.sample validation:validate-short}
-     *
-     * @param value                    Value to validate
-     * @param locale                   The locale to use for the format
-     * @param pattern                  The pattern used to format the value
-     * @param minValue                 The minimum value
-     * @param maxValue                 The maximum value
-     * @param customExceptionClassName Class name of the exception to throw
-     * @throws Exception if not valid
-     */
-    @Processor
-    public void validateShort(String value, @Optional @Default("US") Locale locale, @Optional String pattern,
-                              @Optional Short minValue, @Optional Short maxValue,
-                              @Optional @Default("org.mule.modules.validation.InvalidException") String customExceptionClassName) throws Exception {
-        ShortValidator validator = ShortValidator.getInstance();
-
-        Short newValue = null;
-        if (pattern != null) {
-            newValue = validator.validate(value, pattern, locale.getJavaLocale());
-        } else {
-            newValue = validator.validate(value, locale.getJavaLocale());
-        }
-
-        if (newValue == null) {
-            throw buildException(customExceptionClassName);
-        }
-        if (minValue != null) {
-            if (!validator.minValue(newValue, minValue)) {
-                throw buildException(customExceptionClassName);
-            }
-        }
-        if (maxValue != null) {
-            if (!validator.maxValue(newValue, maxValue)) {
-                throw buildException(customExceptionClassName);
-            }
-        }
-    }
 
     /**
      * If the specified <code>object</code> is empty or null throw an exception.
